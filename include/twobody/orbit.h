@@ -131,8 +131,8 @@ static inline void orbit_from_state(
                 unit4d(ecc));               // eccentricity vector
         vec4d minor = cross(normal, major);
 
+        // true anomaly
         double f0 = atan2(dot(pos, minor), dot(major, pos));
-
 
         // mean anomaly and mean motion
         double M0 = anomaly_true_to_mean(e, f0);
