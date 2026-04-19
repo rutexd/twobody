@@ -4,6 +4,7 @@
 
 #include <math.h>
 #include <float.h>
+#include <stdint.h>
 
 typedef double vec4d __attribute__((vector_size(4 * sizeof(double))));
 
@@ -15,7 +16,7 @@ static inline vec4d splat4d(double x) {
 #ifdef __clang__
 #define shuffle4d(x, y, a, b, c, d) (__builtin_shufflevector((x), (y), (a), (b), (c), (d)))
 #else
-typedef long v4sl __attribute__((vector_size(4 * sizeof(long))));
+typedef int64_t v4sl __attribute__((vector_size(4 * sizeof(int64_t))));
 #define shuffle4d(x, y, a, b, c, d) \
     (__builtin_shuffle((x), (y), (v4sl){(a), (b), (c), (d)}))
 #endif
